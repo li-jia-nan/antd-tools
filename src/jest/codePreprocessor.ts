@@ -53,7 +53,11 @@ const preprocessor: Preprocessor = {
     ]);
 
     const babelSupport = /\.(t|j)sx?$/.test(filePath);
-    const babelJest = createTransformer(babelConfig as TransformerConfig);
+
+    type BabelJestTransformer = Exclude<ReturnType<typeof createTransformer>, Promise<unknown>>;
+
+    const babelJest = createTransformer(babelConfig as TransformerConfig) as BabelJestTransformer;
+
     const name = babelSupport ? filePath : 'file.js';
 
     type ProcessParams = Parameters<typeof babelJest.process>;

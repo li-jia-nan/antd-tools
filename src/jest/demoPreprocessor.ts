@@ -27,7 +27,7 @@ function getCode(tree: unknown): string {
   return code;
 }
 
-function createDemo({ types: t }: { types: typeof babel.types }): babel.PluginObj {
+function createDemo({ types: t }: { types: typeof babel.types }): babel.PluginObject {
   return {
     visitor: {
       Program(path) {
@@ -146,7 +146,7 @@ function transform(src: string, pathFilename: string): ProcessResult {
 
   babelConfig.filename = pathFilename;
 
-  src = babel.transform(src, babelConfig)!.code as string;
+  src = babel.transformSync(src, babelConfig)!.code as string;
 
   return {
     code: src,
