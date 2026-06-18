@@ -36,7 +36,7 @@ interface Preprocessor {
 const preprocessor: Preprocessor = {
   canInstrument: true,
   process(src, filePath, config, transformOptions) {
-    global.__clearBabelAntdPlugin && global.__clearBabelAntdPlugin(); // eslint-disable-line
+    global.__clearBabelAntdPlugin?.();
     const babelConfig = getBabelCommonConfig();
     babelConfig.plugins = [...(babelConfig.plugins || [])];
 

@@ -118,7 +118,7 @@ function transform(src: string, pathFilename: string): ProcessResult {
   const markdown = markTwain(src);
   src = getCode(markdown.content);
 
-  global.__clearBabelAntdPlugin && global.__clearBabelAntdPlugin(); // eslint-disable-line
+  global.__clearBabelAntdPlugin?.();
 
   const babelConfig = getBabelCommonConfig();
 
