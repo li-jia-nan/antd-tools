@@ -12,8 +12,12 @@ const libDir: string = process.env.LIB_DIR || 'components';
 function getCode(tree: unknown): string {
   let code: string = '';
   const find = (node: unknown): void => {
-    if (code) return;
-    if (!JsonML.isElement(node)) return;
+    if (code) {
+      return;
+    }
+    if (!JsonML.isElement(node)) {
+      return;
+    }
     if (JsonML.getTagName(node) !== 'pre') {
       (JsonML.getChildren(node) as unknown[]).forEach(find);
       return;
