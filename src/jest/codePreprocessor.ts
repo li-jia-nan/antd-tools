@@ -1,5 +1,6 @@
 import * as crypto from 'crypto';
 import { createTransformer } from 'babel-jest';
+import type { TransformerConfig } from 'babel-jest';
 import getBabelCommonConfig from '../getBabelCommonConfig';
 import rewriteSource from './rewriteSource';
 import pkg from '../../package.json';
@@ -7,7 +8,7 @@ import * as babel from '@babel/core';
 
 const libDir: string = process.env.LIB_DIR || 'components';
 
-function processDemo({ types: t }: { types: typeof babel.types }): babel.PluginObj {
+function processDemo({ types: t }: { types: typeof babel.types }): babel.PluginObject {
   return {
     visitor: {
       ImportDeclaration(path: babel.NodePath<babel.types.ImportDeclaration>) {
@@ -52,7 +53,7 @@ const preprocessor: Preprocessor = {
     ]);
 
     const babelSupport = /\.(t|j)sx?$/.test(filePath);
-    const babelJest = createTransformer(babelConfig);
+    const babelJest = createTransformer(babelConfig as TransformerConfig);
     const name = babelSupport ? filePath : 'file.js';
 
     type ProcessParams = Parameters<typeof babelJest.process>;

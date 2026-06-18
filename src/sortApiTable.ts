@@ -120,7 +120,7 @@ function sort(ast: Node, filename: string): Node {
     deprecated: new Set<string>(),
   };
 
-  ast.children.forEach((child: Node) => {
+  ast.children?.forEach((child: Node) => {
     // Initialize arrays with Node type
     const staticProps: Node[] = [];
     const dynamicProps: Node[] = [];

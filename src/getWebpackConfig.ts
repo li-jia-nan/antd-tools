@@ -206,9 +206,13 @@ All rights reserved.
         amd: 'react-dom',
       },
     };
-    config.output.library = pkg.name;
-    config.output.libraryTarget = 'umd';
-    config.output.globalObject = 'this';
+
+    if (config.output) {
+      config.output.library = pkg.name;
+      config.output.libraryTarget = 'umd';
+      config.output.globalObject = 'this';
+    }
+
     config.optimization = {
       minimizer: [
         new TerserPlugin<{
