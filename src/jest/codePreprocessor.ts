@@ -38,7 +38,7 @@ const preprocessor: Preprocessor = {
   process(src, filePath, config, transformOptions) {
     global.__clearBabelAntdPlugin?.();
     const babelConfig = getBabelCommonConfig();
-    babelConfig.plugins = [...(babelConfig.plugins || [])];
+    babelConfig.plugins = Array.isArray(babelConfig.plugins) ? [...babelConfig.plugins] : [];
 
     if (/\/demo\//.test(filePath)) {
       babelConfig.plugins.push(processDemo);

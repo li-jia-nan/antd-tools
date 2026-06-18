@@ -43,7 +43,7 @@ const getWebpackConfig: GetWebpackConfigFunction = (modules, options = {}) => {
     enabledReactCompiler: enabledReactCompiler,
   });
 
-  babelConfig.plugins.push([
+  babelConfig.plugins?.push([
     resolve('babel-plugin-import'),
     {
       style: true,
@@ -53,7 +53,7 @@ const getWebpackConfig: GetWebpackConfigFunction = (modules, options = {}) => {
   ]);
 
   if (pkg.name !== 'antd') {
-    babelConfig.plugins.push([
+    babelConfig.plugins?.push([
       resolve('babel-plugin-import'),
       {
         style: 'css',
@@ -65,7 +65,7 @@ const getWebpackConfig: GetWebpackConfigFunction = (modules, options = {}) => {
   }
 
   if (modules === false) {
-    babelConfig.plugins.push(require.resolve('./replaceLib'));
+    babelConfig.plugins?.push(require.resolve('./replaceLib'));
   }
 
   const config: Configuration = {

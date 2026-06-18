@@ -122,7 +122,8 @@ function transform(src: string, pathFilename: string): ProcessResult {
 
   const babelConfig = getBabelCommonConfig();
 
-  babelConfig.plugins = [...babelConfig.plugins];
+  babelConfig.plugins = Array.isArray(babelConfig.plugins) ? [...babelConfig.plugins] : [];
+
   babelConfig.plugins.push(createDemo);
 
   if (libDir !== 'dist') {

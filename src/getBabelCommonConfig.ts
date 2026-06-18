@@ -11,7 +11,7 @@ interface BabelConfig extends InputOptions {
 }
 
 function getBabelCommonConfig(modules?: boolean, options: BabelConfigOptions = {}): BabelConfig {
-  const plugins: PluginItem[] = [
+  const plugins: PluginItem<object>[] = [
     [
       resolve('@babel/plugin-transform-typescript'),
       {

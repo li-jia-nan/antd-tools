@@ -15,6 +15,7 @@ interface Node {
   children?: Node[];
   value?: string;
 }
+
 interface Context {
   files: Record<string, unknown>;
   fileContents(filename: string): string;
